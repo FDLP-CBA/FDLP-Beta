@@ -1,0 +1,21 @@
+{
+  "name": "fdlp-beta",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ciaran-mcmenamin/FDLP-Beta#readme",
+  "bugs": {
+    "url": "https://github.com/ciaran-mcmenamin/FDLP-Beta/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciaran-mcmenamin/FDLP-Beta.git"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "govuk-frontend": "^6.6.0"
+  }
+}
