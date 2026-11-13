@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+      
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <h1 class="govuk-heading-l">
+        Apply for an EV charging grant
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Check before you apply
+      </h2>
+      <p>
+        For this application we will require your property requirements and vehicle registration. </a>
+      </p>
+
+      <p>
+        Passing the initial checks is not grant approval. Government staff must review your evidence and record a decision.</a>
+      </p>
+      <p>Registering takes around 5 minutes.</p>
+
+      <p>
+        Learn more about <a href="#">Grant Requirements</a>
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What you will need
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>The address of the property where the charger is to be installed</li>
+        <li>Your vehivle registration number</li>
+        <li>Photographs of your on-street parking</li>
+      </ul>
+
+      
+       <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+        Next we will check your address and vehicle against the requirements to confirm initial eligibility</a>.     
+      </p>
+
+      <p>
+        Once this is confirmed you will progress to the application page where you can complete your application</a>.
+      </p>
+
+      {{ govukButton({
+        text: "Check eligibility",
+        href: "#",
+        isStartButton: true
+      }) }}
+
+      <p>
+        You can also <a href="#">apply by post</a>.
+      </p>
+
+      <p>
+        The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Returning users
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Applicant Sign In
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Government Sign In
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Installer Sign In
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}
