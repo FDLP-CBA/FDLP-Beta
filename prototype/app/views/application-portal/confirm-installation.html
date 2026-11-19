@@ -1,0 +1,108 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {% if confirmationError %}Error: {% endif %}
+  Confirm installation details – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+    <div class="govuk-phase-banner govuk-width-container">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service. We&#39;re still working on ways to improve it.
+        </span>
+      </p>
+    </div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "/application-portal/dashboard"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if confirmationError %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: confirmationError,
+              href: "#installationAgreements"
+            }
+          ]
+        }) }}
+      {% endif %}
+
+      <span class="govuk-caption-l">{{ serviceName }}</span>
+
+      <h1 class="govuk-heading-l">
+        Confirm installation details
+      </h1>
+
+      <p class="govuk-body">
+        Your chosen installer is
+        <strong>{{ data['selectedInstaller'] }}</strong>.
+      </p>
+
+      {% set agreementError = false %}
+      {% if confirmationError %}
+        {% set agreementError = { text: confirmationError } %}
+      {% endif %}
+
+      <form action="/application-portal/confirm-installation" method="post">
+
+        {{ govukCheckboxes({
+          idPrefix: "installationAgreements",
+          name: "installationAgreements",
+          fieldset: {
+            legend: {
+              text: "Confirm both statements",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select both boxes to continue."
+          },
+          errorMessage: agreementError,
+          items: [
+            {
+              value: "date",
+              text: "I have agreed an installation date with my chosen installer",
+              checked: checked("installationAgreements", "date")
+            },
+            {
+              value: "cost",
+              text: "I have agreed the installation cost with my chosen installer",
+              checked: checked("installationAgreements", "cost")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+      <h2 class="govuk-heading-m">
+        If you cannot apply online
+      </h2>
+
+      <p class="govuk-body">
+        You can get help or complete a postal application.
+      </p>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="#">
+          Get help or use the supported application route
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

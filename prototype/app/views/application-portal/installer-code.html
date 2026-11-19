@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Installer code – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+    <div class="govuk-phase-banner govuk-width-container">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service. We&#39;re still working on ways to improve it.
+        </span>
+      </p>
+    </div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+
+      <h2 class="govuk-heading-l">
+        Enter your unique installer code
+      </h2>
+
+      <p class="govuk-body">
+        Your chosen installer is
+        <strong>{{ data['selectedInstaller'] }}</strong>.
+      </p>
+
+      <p class="govuk-body">
+        We have sent you an email containing your unique code.
+        <a class="govuk-link" href="#">Didn't receive an email?</a>
+      </p>
+
+      <form action="/application-portal/installer-code" method="post">
+        {{ govukInput({
+          label: {
+            text: "Installer code"
+          },
+          id: "installerCode",
+          name: "installerCode",
+          value: data['installerCode'],
+          classes: "govuk-input--width-20",
+          attributes: {
+            required: true
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
