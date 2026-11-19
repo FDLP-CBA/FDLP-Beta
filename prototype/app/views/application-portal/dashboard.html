@@ -97,7 +97,7 @@
       <li class="govuk-task-list__item govuk-task-list__item--with-link">
 
         <div class="govuk-task-list__name-and-hint">
-          {% if data['installationConfirmed'] %}
+          {% if data['installationConfirmed'] or not data['installerChosen'] %}
             Confirm Installation
           {% else %}
             <a class="govuk-link govuk-task-list__link"
