@@ -1,0 +1,138 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Applicant Portal – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+    <div class="govuk-phase-banner govuk-width-container">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service. We&#39;re still working on ways to improve it.
+        </span>
+      </p>
+    </div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+
+    <h2 class="govuk-heading-l">
+      Applicant Portal
+    </h2>
+
+    <h2 class="govuk-heading-s">
+      Next Steps:
+    </h2>
+
+    {% if data['installerChosen'] %}
+      <p> Your chosen installer will contact you shortly to confirm the details of your installation. </p>
+    {% else %}
+      <p> Continue to installer selection.</p>
+    {% endif %}
+
+    <ul class="govuk-task-list">
+
+      <li class="govuk-task-list__item govuk-task-list__item--with-link">
+        <div class="govuk-task-list__name-and-hint">
+        
+            Check Eligibility
+    
+            <div class="govuk-task-list__hint">
+              You are eligible
+            </div>
+        </div>
+        <div class="govuk-task-list__status">
+          <strong class="govuk-tag govuk-tag--green">
+            Completed
+          </strong>
+        </div>
+      </li>
+
+      <li class="govuk-task-list__item govuk-task-list__item--with-link">
+        <div class="govuk-task-list__name-and-hint">
+
+          {% if data['installerChosen'] %}
+            Choose Installer
+          {% else %}
+          <a class="govuk-link govuk-task-list__link"
+            href="/application-portal/choose-installer"
+            aria-describedby="choose-installer-status">
+            Choose Installer
+          </a>
+          {% endif %}
+          {% if data['selectedInstaller'] %}
+            <div class="govuk-task-list__hint">
+              {{ data['selectedInstaller'] }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="govuk-task-list__status" id="choose-installer-status">
+          {% if data['installerChosen'] %}
+            <strong class="govuk-tag govuk-tag--green">
+              Completed
+            </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--orange">
+              Incomplete
+            </strong>
+          {% endif %}
+        </div>
+      </li>
+
+      <li class="govuk-task-list__item govuk-task-list__item--with-link">
+
+        <div class="govuk-task-list__name-and-hint">
+          {% if data['installationConfirmed'] %}
+            Confirm Installation
+          {% else %}
+            <a class="govuk-link govuk-task-list__link"
+               href="/application-portal/confirm-installation">
+              Confirm Installation Details
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="govuk-task-list__status">
+          {% if data['installationConfirmed'] %}
+            <strong class="govuk-tag govuk-tag--green">
+              Completed
+            </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--orange">
+              Incomplete
+            </strong>
+          {% endif %}
+        </div>
+      </li>
+    </ul>
+    {% if data['installationConfirmed'] %}
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h2 class="govuk-panel__title">
+          Application complete
+        </h2>
+        <div class="govuk-panel__body">
+          Your reference number<br>
+          <strong>EVJ2123F</strong>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

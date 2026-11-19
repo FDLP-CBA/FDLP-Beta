@@ -1,0 +1,145 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+{% endblock %}
+
+{% block containerStart %}
+    <div class="govuk-phase-banner govuk-width-container">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Alpha
+        </strong>
+        <span class="govuk-phase-banner__text">
+          This is a new service. We&#39;re still working on ways to improve it.
+        </span>
+      </p>
+    </div>
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <h1 class="govuk-heading-l">
+        Choose an installer
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Approved Installers
+      </h2>
+      <p>
+        For this application we require you to pick an approved provider for your EV installation.  </a>
+      </p>
+
+      <h3 class="govuk-heading-s">
+        GreenCharge Ltd
+      </h3>
+      <p>
+        Learn more about <a href="#">GreenCharge Ltd</a>
+      </p>
+           <h3 class="govuk-heading-s">
+        VoltMasters
+      </h3>
+      <p>
+        Learn more about <a href="#">VoltMasters</a>
+      </p>
+           <h3 class="govuk-heading-s">
+        EcoVolt Installations
+      </h3>
+      <p>
+        Learn more about <a href="#">EcoVolt Installations</a>
+      </p>
+           <h3 class="govuk-heading-s">
+        PowerUp Services
+      </h3>
+      <p>
+        Learn more about <a href="#">PowerUp Services</a>
+      </p>
+           <h3 class="govuk-heading-s">
+        ChargePoint Pros
+      </h3>
+      <p>
+        Learn more about <a href="#">ChargePoint Pros</a>
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Selection
+      </h2>
+    <form action="/application-portal/choose-installer" method="post">
+  {{ govukSelect({
+    id: "selectedInstaller",
+    name: "selectedInstaller",
+    label: {
+      text: "Choose your desired installer"
+    },
+    items: [
+      {
+        value: "",
+        text: "Choose installer"
+      },
+      {
+        value: "GreenCharge Ltd",
+        text: "GreenCharge Ltd",
+        selected: data['selectedInstaller'] == "GreenCharge Ltd"
+      },
+      {
+        value: "VoltMasters",
+        text: "VoltMasters",
+        selected: data['selectedInstaller'] == "VoltMasters"
+      },
+      {
+        value: "EcoVolt Installations",
+        text: "EcoVolt Installations",
+        selected: data['selectedInstaller'] == "EcoVolt Installations"
+      },
+      {
+        value: "PowerUp Services",
+        text: "PowerUp Services",
+        selected: data['selectedInstaller'] == "PowerUp Services"
+      },
+      {
+        value: "ChargePoint Pros",
+        text: "ChargePoint Pros",
+        selected: data['selectedInstaller'] == "ChargePoint Pros"
+      }
+    ],
+    attributes: {
+      required: true
+    }
+  }) }}
+
+  <h2 class="govuk-heading-m">What happens next</h2>
+
+  <p class="govuk-body">
+    Next we will notify your chosen installer that you have selected them.
+  </p>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+    </form>
+      
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+
+{% endblock %}
