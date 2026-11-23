@@ -1,0 +1,126 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Registration – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
+{% endblock %}
+
+
+
+
+  {% block content %}
+  
+  <a class="govuk-back-link" href="EligibilityAddress.html">Back</a>
+  
+  <p class="govuk-caption-m">Eligibility check 2 of 2</p>
+  
+  
+  <form
+  id="vehicle-form"
+  action="/EligibilityCheck/check-result"
+  method="post"
+  novalidate>
+
+  <div
+    class="govuk-error-summary"
+    data-error-summary
+    tabindex="-1"
+    aria-labelledby="vehicle-error-title"
+    hidden>
+
+    <div role="alert">
+      <h2
+        class="govuk-error-summary__title"
+        id="vehicle-error-title">
+        There is a problem
+      </h2>
+
+      <div class="govuk-error-summary__body">
+        <ul
+          class="govuk-list govuk-error-summary__list"
+          data-error-list>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label
+        class="govuk-label govuk-label--l"
+        for="vehicle-registration">
+        What is your vehicle registration number?
+      </label>
+    </h1>
+
+    <div id="vehicle-registration-hint" class="govuk-hint">
+      For example, BC21 ABC
+    </div>
+
+    
+    <p
+      id="vehicle-registration-error"
+      class="govuk-error-message"
+      hidden>
+      <span class="govuk-visually-hidden">Error:</span>
+      <span data-error-text>
+        Enter your vehicle registration number
+      </span>
+    </p>
+
+
+    <p
+      id="vehicle-invalid-registration-error"
+      class="govuk-error-message"
+      hidden>
+      <span class="govuk-visually-hidden">Error:</span>
+      <span data-error-text>
+        Enter a valid registration
+      </span>
+    </p>
+
+    
+    <input
+      class="govuk-input govuk-input--width-10"
+      id="vehicle-registration"
+      name="vehicleRegistration"
+      type="text"
+      spellcheck="false"
+      autocapitalize="characters"
+      aria-describedby="vehicle-registration-hint"
+      aria-required="true">
+  </div>
+
+  <button
+    type="submit"
+    class="govuk-button"
+    data-module="govuk-button">
+    Continue
+  </button>
+
+</form>
+
+
+<script src="/public/javascripts/EligibilityCheckValidation.js" defer></script>
+  
+{% endblock %}

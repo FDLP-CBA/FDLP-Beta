@@ -4,3 +4,8 @@
 // 
 
 // Add extra styles here
+
+.govuk-error-message[hidden],
+.govuk-error-summary[hidden] {
+  display: none !important;
+}

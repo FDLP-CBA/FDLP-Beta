@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+{% endblock %}
+
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<a href ="">Back</a>
+
+<h1 class = "govuk-heading-m">What is the property address?</h1>
+
+<fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="EmailAddressInput">
+        Email address
+      </label>
+      <input class="govuk-input" id="EmailAddressEntry" name="Email" type="text">
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="PasswordInput">
+        Password
+      </label>
+      <input class="govuk-input" id="PasswordEntry" name="Password" type="text">
+    </div>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="PasswordInput">
+          Repeat Password
+        </label>
+        <input class="govuk-input" id="PasswordReEntry" name="RePassword" type="text">
+    </div>
+    
+
+    <a href=""
+          role="button"
+          draggable="false"
+          class="govuk-button"
+          data-module="govuk-button">
+          Sign Up
+    </a>
+
+
+
+  </fieldset>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ Address – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
+{% endblock %}
+
+
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+      
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<a class="govuk-back-link" href="../start-page.html">Back</a>
+
+<form
+  id="address-form"
+  action="/EligibilityCheck/EligibilityReg"
+  method="post"
+  novalidate>
+
+  <!-- GOV.UK error summary: hidden until validation fails -->
+  <div
+    class="govuk-error-summary"
+    data-error-summary
+    tabindex="-1"
+    aria-labelledby="address-error-title"
+    hidden>
+
+    <div role="alert">
+      <h2
+        class="govuk-error-summary__title"
+        id="address-error-title">
+        There is a problem
+      </h2>
+
+      <div class="govuk-error-summary__body">
+        <ul
+          class="govuk-list govuk-error-summary__list"
+          data-error-list>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="govuk-caption-m">Eligibility check 1 of 2</p>
+
+  <fieldset class="govuk-fieldset" aria-describedby="address-hint">
+
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What is the property address?
+      </h1>
+    </legend>
+
+    <div id="address-hint" class="govuk-hint">
+      Enter the address where you want the charger installed.
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-line-1">
+        Address line 1
+      </label>
+
+      <p
+        id="address-line-1-error"
+        class="govuk-error-message"
+        hidden>
+        <span class="govuk-visually-hidden">Error:</span>
+        <span data-error-text>Enter address line </span>
+      </p>
+
+      <input
+        class="govuk-input"
+        id="address-line-1"
+        name="addressLine1"
+        type="text"
+        autocomplete="address-line1"
+        aria-required="true">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-line-2">
+        Address line 2 (optional)
+      </label>
+
+      <input
+        class="govuk-input"
+        id="address-line-2"
+        name="addressLine2"
+        type="text"
+        autocomplete="address-line2">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-town">
+        Town or city
+      </label>
+
+      <p
+        id="address-town-error"
+        class="govuk-error-message"
+        hidden>
+        <span class="govuk-visually-hidden">Error:</span>
+        <span data-error-text>Enter a town or city</span>
+      </p>
+
+      <input
+        class="govuk-input govuk-!-width-two-thirds"
+        id="address-town"
+        name="addressTown"
+        type="text"
+        autocomplete="address-level2"
+        aria-required="true">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-county">
+        County (optional)
+      </label>
+
+      <input
+        class="govuk-input govuk-!-width-two-thirds"
+        id="address-county"
+        name="addressCounty"
+        type="text"
+        autocomplete="address-level1">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-postcode">
+        Postcode
+      </label>
+
+      <p
+        id="address-postcode-error"
+        class="govuk-error-message"
+        hidden>
+        <span class="govuk-visually-hidden">Error:</span>
+        <span data-error-text>Enter a postcode</span>
+      </p>
+
+      <input
+        class="govuk-input govuk-input--width-10"
+        id="address-postcode"
+        name="addressPostcode"
+        type="text"
+        autocomplete="postal-code"
+        spellcheck="false"
+        aria-required="true">
+    </div>
+
+  </fieldset>
+
+  <button
+    type="submit"
+    class="govuk-button"
+    data-module="govuk-button">
+    Continue
+  </button>
+
+</form>
+
+<script src="/public/javascripts/EligibilityCheckValidation.js" defer></script>
+
+
+{% endblock %}
