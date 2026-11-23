@@ -6,7 +6,32 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+
+router.post('/EligibilityCheck/check-result', (req, res) => {
+  const { addressLine1, addressTown, addressPostcode } = req.session.data
+  const addressFields = [addressLine1, addressTown, addressPostcode]
+    .map(value => typeof value === 'string' ? value.trim() : '')
+
+  if (addressFields.some(value => value === '')) {
+    return res.redirect('/EligibilityCheck/EligibilityAddress')
+  }
+
+
+  const registration = req.body.vehicleRegistration
+  const plate = typeof registration === 'string'
+    ? registration.toUpperCase().replace(/\s+/g, '')
+    : ''
+
+  if (!/^[A-Z]{2}[0-9]{2}[A-Z]{3}$/.test(plate)) {
+    return res.redirect('/EligibilityCheck/EligibilityReg')
+  }
+
+  
+  const allFieldsFailed = addressFields.every(value => value.toLowerCase() === 'failed')
+  const resultPage = allFieldsFailed ? 'NotEligible' : 'EligibleToApply'
+  return res.redirect(`/EligibilityCheck/${resultPage}`)
+})
+
 router.post('/application-portal/choose-installer', (req, res) => {
   const installer = (req.body.selectedInstaller || '').trim()
 

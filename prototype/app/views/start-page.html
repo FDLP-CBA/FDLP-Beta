@@ -8,6 +8,19 @@
   <header>
     {{govukHeader()}} 
   </header>
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
 {% endblock %}
 
 {% block containerStart %}
@@ -23,6 +36,7 @@
 {% endblock %}
 
 {% block content %}
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -47,6 +61,11 @@
       </p>
       <p>Registering takes around 5 minutes.</p>
 
+      <div class ="govuk-inset-text">
+        It can take up to 8 weeks for your application to process. Please check eligibility requirements before applying.
+      </div>
+      
+
       <p>
         Learn more about <a href="#">Grant Requirements</a>
       </p>
@@ -57,7 +76,8 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>The address of the property where the charger is to be installed</li>
-        <li>Your vehivle registration number</li>
+        <li>Your vehicle registration </li>
+        <li>An email address for application updates</li>
         <li>Photographs of your on-street parking</li>
       </ul>
 
@@ -74,11 +94,18 @@
         Once this is confirmed you will progress to the application page where you can complete your application</a>.
       </p>
 
-      {{ govukButton({
-        text: "Check eligibility",
-        href: "/property-check",
-        isStartButton: true
-      }) }}
+      <a href="EligibilityCheck/EligibilityAddress.html"
+          role="button"
+          draggable="false"
+          class="govuk-button"
+          data-module="govuk-button">
+          Check eligibility
+      </a>
+
+
+      <h2 class ="govuk-heading-m">
+        If you cannot apply online
+      </h2>
 
       <p>
         You can also <a href="#">apply by post</a>.
@@ -99,7 +126,7 @@
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="#">
+              <a href="Sign-In/sign-in.html">
                 Applicant Sign In
               </a>
             </li>
@@ -120,6 +147,12 @@
             </li>
           </ul>
         </nav>
+      </aside>
+      <aside class ="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Help and Support
+        </h2>
+        <a href ="#">Contact the support team</a>
       </aside>
 
     </div>
