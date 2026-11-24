@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+
+
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<a href = "javascript:history.back()" class = "govuk-back-link">Back</a>
+
+<h1 class = "govuk-heading-m">Applicant sign up</h1>
+
+<form id="signUpForm" method="post" novalidate>
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="EmailAddressEntry">
+        Email address
+      </label>
+      <p id="email-error" class="govuk-error-message" hidden>
+        <span class="govuk-visually-hidden">Error:</span> Enter your email address
+      </p>
+      <p id="email-format-error" class="govuk-error-message" hidden>
+        <span class="govuk-visually-hidden">Error:</span> Enter an email address that includes an @ symbol
+      </p>
+      <input class="govuk-input govuk-!-width-one-half" id="EmailAddressEntry" name="Email" type="text">
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="PasswordEntry">
+        Password
+      </label>
+      <p id="password-error" class="govuk-error-message" hidden>
+        <span class="govuk-visually-hidden">Error:</span> Enter your password
+      </p>
+      <input class="govuk-input govuk-!-width-one-half" id="PasswordEntry" name="Password" type="password">
+    </div>
+    <div class ="govuk-form-group">
+      <label class ="govuk-label" for="RepeatPasswordEntry">
+        Repeat Password
+      </label>
+      <p id="repeat-password-error" class="govuk-error-message" hidden>
+        <span class="govuk-visually-hidden">Error:</span> Enter your password again
+      </p>
+      <p id ="password-mismatch-error" class="govuk-error-message" hidden>
+        <span class="govuk-visually-hidden">Error:</span> Enter the same password in both fields
+      </p>
+
+      <input class ="govuk-input govuk-!-width-one-half" id="RepeatPasswordEntry" type="password">
+    </div>
+  </fieldset>
+
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Sign up
+  </button>
+</form>
+
+<script src="/public/javascripts/signUpValidation.js" defer></script>
+
+{% endblock %}
