@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+
+{% endblock %}
+
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<a href = "javascript:history.back()" class = "govuk-back-link">Back</a>
+
+
+<div id="sign-in-error-alert" class="govuk-error-summary" role="alert" hidden>
+  <h2 class="govuk-error-summary__title">Incorrect email or password</h2>
+</div>
+
+<form id="signInForm">
+ <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">Applicant sign in</h1>
+  </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="EmailAddressInput">
+        Email address
+      </label>
+
+      <p id="email-error" class="govuk-error-message" hidden>
+        <span class ="govuk-visually-hidden">Error</span> Enter your email
+      </p>
+
+
+      <input class="govuk-input govuk-!-width-one-half" id="EmailAddressEntry" name="Email" type="text">
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="PasswordInput">
+        Password
+      </label>
+      <p id="password-error" class="govuk-error-message" hidden>
+        <span class ="govuk-visually-hidden">Error</span> Enter your password
+      </p>
+      
+      <input class="govuk-input govuk-!-width-one-half" id="PasswordEntry" name="Password" type="text">
+    </div>
+    
+
+    <button
+       type="submit"
+       class="govuk-button"
+       data-module="govuk-button">
+       Sign in
+    </button>
+
+
+
+   </fieldset>
+  </form>
+
+  <script type="module" src="/public/javascripts/signinValidation.js"></script>
+
+
+{% endblock %}

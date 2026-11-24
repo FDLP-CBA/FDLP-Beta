@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Are you a new applicant? – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+
+
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+ <a href = "javascript:history.back()" class = "govuk-back-link">Back</a>
+
+  <form id="new-applicant-form">
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">Are you a new applicant?</h1>
+        </legend>
+        <p id="new-applicant-error" class="govuk-error-message" hidden>
+          <span class="govuk-visually-hidden">Error:</span> Select option from below
+        </p>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="new-applicant-yes" name="newApplicant" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="new-applicant-yes">Yes</label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="new-applicant-no" name="newApplicant" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="new-applicant-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <button 
+        type="submit" 
+        class="govuk-button" 
+        data-module="govuk-button">
+        Continue
+    </button>
+  </form>
+
+  <script>
+    (() => {
+      const form = document.getElementById('new-applicant-form')
+      const inlineError = document.getElementById('new-applicant-error')
+
+      form.addEventListener('submit', (event) => {
+        
+        event.preventDefault()
+        const answer = form.querySelector('input[name="newApplicant"]:checked')
+
+        if (!answer) {
+          inlineError.hidden = false
+          form.querySelector('.govuk-form-group').classList.add('govuk-form-group--error')
+          form.querySelector('fieldset').setAttribute('aria-describedby', inlineError.id)
+          return
+        }
+
+        window.location.assign(answer.value === 'yes'
+          ? '/EligibilityCheck/EligibilityAddress'
+          : '/Sign-In/sign-in')
+      })
+    })()
+  </script>
+{% endblock %}

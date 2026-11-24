@@ -1,0 +1,100 @@
++{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+      </span>
+    </p>
+  </div>
+
+
+
+{% endblock %}
+
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<a href = "javascript:history.back()" class = "govuk-back-link">Back</a>
+
+<h1 class = "govuk-heading-m">EV Grant Service</h1>
+
+
+<div>
+
+ <a href="NewApplicantQ.html"
+          role="button"
+          draggable="false"
+          class="govuk-button"
+          data-module="govuk-button">
+          Applicant sign in
+  </a>
+</div>
+
+
+<div>
+  <a href="installerSignIn.html"
+          role="button"
+          draggable="false"
+          class="govuk-button"
+          data-module="govuk-button">
+          Installer sign in
+  </a>
+</div>
+
+
+
+<div>
+  <a href="govSignIn.html"
+    role="button"
+    draggable="false"
+    class="govuk-button"
+    data-module="govuk-button">
+    Government sign in        
+ </a>
+</div>
+
+
+
+</fieldset>
+
+<div>
+
+ <h3 class ="govuk-heading-s">If you cannot apply online</h3>
+
+ <p>You can get help or complete a postal application.</p>
+
+
+ <a href="">You can get help or complete a postal application </a>
+
+
+
+</div>
+
+
+
+{% endblock %}
