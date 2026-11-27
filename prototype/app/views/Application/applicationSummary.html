@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+      
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<a href = "javascript:history.back()" class = "govuk-back-link gov-!-margin-bottom-3">Back</a>
+
+<p>Application form 4 of 4 </p>
+
+<h1 class="govuk-heading-l">Check your application</h1>
+
+<div data-application-summary>
+  <h3 class="govuk-heading-s">Application details </h3>
+
+ <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="govuk-summary-list__value" data-summary="name">
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contact details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <div> <span data-summary="email"></span></div>
+      <div> <span data-summary="phone"></span></div>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Address
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <div><span data-summary="address"></span></div>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Vehicle details
+    </dt>
+    <dd class="govuk-summary-list__value" data-summary="registration">
+    </dd>
+  </div>
+
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Parking photographs
+    </dt>
+    <dd class="govuk-summary-list__value" data-summary="photos">
+    </dd>
+  </div>
+ </dl>
+</div>
+
+
+
+<!-- Placeholder-->
+<p>---------------------------------------------------------------------------------------------------------------</p>
+<p>Check your details and photographs before submitting.</p>
+<p>Staff will review the evidence and verify your application. This is not approval.</p>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+          I can confirm these details are correct.
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+<button
+       type="submit"
+       class="govuk-button"
+       data-module="govuk-button">
+       Submit Application
+    </button>
+
+
+    <script src ="/public/javascripts/storage.js" defer></script>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header>
+    {{govukHeader()}} 
+  </header>
+
+
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Beta
+    </strong>
+    <span class="govuk-phase-banner__text">
+      This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.
+    </span>
+  </p>
+</div>
+
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }
+      
+    ]
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<a href = "javascript:history.back()" class = "govuk-back-link gov-!-margin-bottom-3">Back</a>
+
+<p>Application form 3 of 4 </p>
+
+<h1 class="govuk-heading-l">
+    Upload Parking photographs
+  </h1>
+
+  <p>Here you will upload photographs of the on-street parking you intend to use for your parking.</p>
+  <p>Staff will use these to assess your parking evidence</p>
+
+  <div class="govuk-inset-text">
+    Upload your photographs below ensuring they meet the requirements listed below.
+  </div>
+
+
+  <h3 class = "govuk-heading-m">Before you take your photographs</h3>
+
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Make sure your parking complies with the road restrictions and signs that apply to the street.</li>
+    <li>Ensure the parking is shown in relation to your property. </li>
+    <li>Photographs must be clear and in good lightning. </li> 
+    <li>Do put yourself or others at risk when obtaining your photographs.</li>
+  </ul>
+
+
+  <h3 class="govuk-heading-m">What an example set should show</h3>
+
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+    <p>
+      A wider view should show your property and the proposed parking area together. 
+      A closer view should ensure that any parking signs or roads markings are readable.
+    </p>
+
+    <p>
+      If one photograph cannot show the full context, include another view.
+      A photograph alone does not confirm that the parking is compliant or that your application will be approved. 
+    </p>
+
+    <p>
+      Ensure photographs are clear and are without distortion or blur which could impact our ability to review these images.
+    </p>
+
+
+
+  <form id="photoForm" method="post">
+   <h4 class ="govuk-heading-s">Parking photographs</h4>
+    
+   <div class="govuk-form-group">
+    <label class="govuk-label" for="file-upload-1">
+      Upload a file
+    </label>
+
+    <p id="photo-error" class="govuk-error-message" hidden>
+      <span class ="govuk-visually-hidden">Error</span> Upload a photo
+    </p>
+
+    <input class="govuk-file-upload" id="photo-upload-1" name="photoUpload1" accept=".jpg, .jpeg, .png, images/webp" type="file">
+   </div>
+    <p>If staff require more information we will email you outlining what is required.</p>
+    
+
+
+    <button
+       type="submit"
+       class="govuk-button"
+       data-module="govuk-button">
+       Check Application
+    </button>
+  </form>
+ </div>
+
+ </div>
+
+
+<script src ="/public/javascripts/applicationCheck.js" defer></script>
+<script src ="/public/javascripts/storage.js" defer></script>
+
+
+
+{% endblock  %}

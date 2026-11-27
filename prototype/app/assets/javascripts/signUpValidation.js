@@ -34,6 +34,7 @@ signUpForm.addEventListener('submit', (event) =>{
 
   if (!hasErrors){
     localStorage.setItem('demoEmail', emailValue)
+    window.location.href='/Application/enterName.html'
   }
 
 

@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', function(event) {
         account.password === password.value)
 
     if (account){
-        
+        localStorage.setItem('demoEmail', account.email)
 
     }else{
         errorAlert.hidden = false
